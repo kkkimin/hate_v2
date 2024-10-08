@@ -117,15 +117,6 @@ def load_trainer_for_train(args, model, hate_train_dataset, hate_valid_dataset):
 def train(args, combined_data):   # combined_data 인자를 제거
     """모델을 학습(train)하고 best model을 저장"""
     
-    # 현재 날짜와 시간을 가져오기
-    kst = pytz.timezone('Asia/Seoul')
-    current_time = datetime.datetime.now(kst)
-    formatted_time = current_time.strftime("%m%d_%H%M")  # 'YYYYMMDD_HHMM' 형식으로 포맷팅
-
-    # best_model 폴더 생성
-    best_model_dir = os.path.join(args.model_dir, f"best_model_{formatted_time}")
-    os.makedirs(best_model_dir, exist_ok=True)  # 폴더 생성, 이미 존재하면 무시
-
     # 원본 데이터 로드
     original_data_path = os.path.join(args.original_data_dir, args.original_data_file)
     original_data = pd.read_csv(original_data_path)
@@ -172,6 +163,5 @@ def train(args, combined_data):   # combined_data 인자를 제거
     print("--- Start train ---")
     trainer.train()
     print("--- Finish train ---")
-
-    model.save_pretrained(best_model_dir)
+    model.save_pretrained(args.model_dir)
 
