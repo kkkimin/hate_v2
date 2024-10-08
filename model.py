@@ -112,13 +112,26 @@ def load_trainer_for_train(args, model, hate_train_dataset, hate_valid_dataset):
     return trainer
 
 
-def train(args, combined_data):   # combined_data 인자 추가
+def train(args):   # combined_data 인자를 제거
     """모델을 학습(train)하고 best model을 저장"""
-    original_data_path = os.path.join(args.original_data_dir, args.original_data_file)  # "./train.csv"
+    
+    # 원본 데이터 로드
+    original_data_path = os.path.join(args.original_data_dir, args.original_data_file)
     original_data = pd.read_csv(original_data_path)
-    combined_data = pd.concat([original_data, augmented_data], ignore_index=True)  
-    augmented_data_path = os.path.join(args.augmented_data_dir, args.augmented_data_file) 
-    augmented_data = pd.read_csv(augmented_data_path)
+    
+    # 증강 데이터 파일 확인 및 로드
+    augmented_data_path = os.path.join(args.augmented_data_dir, args.augmented_data_file)
+    
+    if os.path.exists(augmented_data_path):
+        augmented_data = pd.read_csv(augmented_data_path)
+        print(f"AEDA로 증강된 데이터 개수: {len(augmented_data)}")
+    else:
+        augmented_data = pd.DataFrame()  # 증강 데이터가 없으면 빈 데이터프레임 할당
+        print(f"증강된 데이터 파일이 {augmented_data_path}에 존재하지 않습니다. 빈 데이터프레임 사용.")
+    
+    # 원본 데이터와 증강 데이터 결합
+    combined_data = pd.concat([original_data, augmented_data], ignore_index=True)
+    print(f"결합된 데이터의 행의 수: {len(combined_data)}")
 
     wandb.init(project=args.wandb_project, name=args.run_name)
     wandb.config.update(args)
