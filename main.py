@@ -33,16 +33,16 @@ def parse_args():
         "--save_path", type=str, default="./model", help="모델 저장 경로"
     )
     parser.add_argument(
-        "--save_step", type=int, default=100, help="모델을 저장할 스텝 간격"  # 모델이 훈련 도중에 저장되는 간격을 설정
+        "--save_step", type=int, default=200, help="모델을 저장할 스텝 간격"  # 모델이 훈련 도중에 저장되는 간격을 설정
     )
     parser.add_argument(
         "--logging_step", type=int, default=100, help="로그를 출력할 스텝 간격"
     )
     parser.add_argument(
-        "--eval_step", type=int, default=100, help="모델을 평가할 스텝 간격"  
+        "--eval_step", type=int, default=200, help="모델을 평가할 스텝 간격"  
     )
     parser.add_argument(
-        "--save_limit", type=int, default=5, help="저장할 모델의 최대 개수"  # 저장할 체크포인트(모델)의 최대 개수
+        "--save_limit", type=int, default=10, help="저장할 모델의 최대 개수"  # 저장할 체크포인트(모델)의 최대 개수
     )
     parser.add_argument("--seed", type=int, default=42, help="랜덤 시드 값")
     parser.add_argument("--epochs", type=int, default=10, help="에폭 수 (예: 10)")
