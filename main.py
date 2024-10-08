@@ -59,7 +59,7 @@ def parse_args():
     parser.add_argument(
         "--weight_decay", type=float, default=0.01, help="가중치 감소(weight decay) 값"
     )
-    parser.add_argument("--warmup_steps", type=int, default=100, help="워밍업 스텝 수")
+    parser.add_argument("--warmup_steps", type=int, default=500, help="워밍업 스텝 수")
     parser.add_argument(
         "--scheduler", type=str, default="linear", help="학습률 스케줄러 타입"
     )
@@ -72,7 +72,7 @@ def parse_args():
     parser.add_argument(    # wandb 수정 이름 변경!
         "--run_name",
         type=str,
-        default="beomi/수정5_Modify-def-train()_early10",
+        default="ensemble_base",
         help="wandb 에 기록되는 run name",
     )
     parser.add_argument(
