@@ -1,6 +1,9 @@
 # 라이브러리 임포트
 import pytorch_lightning as pl
 import torch
+import os
+import wandb
+
 from utils import compute_metrics
 from data import prepare_dataset
 
@@ -13,6 +16,7 @@ from transformers import Trainer, TrainingArguments
 from transformers import EarlyStoppingCallback
 from transformers.optimization import get_linear_schedule_with_warmup  
 from tqdm import tqdm
+import pandas as pd
 
 def load_tokenizer_and_model_for_train(args):
     """학습(train)을 위해 '사전학습(protrainde)된 토크나이저와 모델을 huggingface에서 load"""
@@ -110,6 +114,15 @@ def load_trainer_for_train(args, model, hate_train_dataset, hate_valid_dataset):
 
 def train(args, combined_data):   # combined_data 인자 추가
     """모델을 학습(train)하고 best model을 저장"""
+    original_data_path = os.path.join(args.original_data_dir, args.original_data_file)  # "./train.csv"
+    original_data = pd.read_csv(original_data_path)
+    combined_data = pd.concat([original_data, augmented_data], ignore_index=True)  
+    augmented_data_path = os.path.join(args.augmented_data_dir, args.augmented_data_file) 
+    augmented_data = pd.read_csv(augmented_data_path)
+
+    wandb.init(project=args.wandb_project, name=args.run_name)
+    wandb.config.update(args)
+
     # fix a seed
     pl.seed_everything(seed=42, workers=False)
 
