@@ -75,7 +75,7 @@ def load_trainer_for_train(args, model, hate_train_dataset, hate_valid_dataset):
 
     ## Add callback & optimizer & scheduler
     MyCallback = EarlyStoppingCallback(
-        early_stopping_patience=10,      # 몇 에폭 동안 검증 손실이 개선되지 않으면 훈련을 중단할지를 결정
+        early_stopping_patience=20,      # 몇 에폭 동안 검증 손실이 개선되지 않으면 훈련을 중단할지를 결정
         early_stopping_threshold=0.001  # 개선을 고려하는 손실 변화의 최소 크기
     )
 
