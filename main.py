@@ -72,7 +72,7 @@ def parse_args():
     parser.add_argument(    # wandb 수정 이름 변경!
         "--run_name",
         type=str,
-        default="beomi/수정5_Modify-def-train()",
+        default="beomi/수정5_Modify-def-train()_early10",
         help="wandb 에 기록되는 run name",
     )
 
