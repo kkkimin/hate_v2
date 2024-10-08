@@ -112,7 +112,7 @@ def load_trainer_for_train(args, model, hate_train_dataset, hate_valid_dataset):
     return trainer
 
 
-def train(args):   # combined_data 인자를 제거
+def train(args, combined_data):   # combined_data 인자를 제거
     """모델을 학습(train)하고 best model을 저장"""
     
     # 원본 데이터 로드

@@ -75,6 +75,12 @@ def parse_args():
         default="beomi/수정5_Modify-def-train()_early10",
         help="wandb 에 기록되는 run name",
     )
+    parser.add_argument(
+    "--wandb_project",
+    type=str,
+    default="GCP_KIN",  # 기본 프로젝트 이름 설정
+    help="WandB 프로젝트 이름"
+    )
 
     parser.add_argument("--original_data_dir", type=str, default="./", help="원본 데이터의 경로")    # "./"는 현재 디렉토리 의미
     parser.add_argument("--original_data_file", type=str, default="train.csv", help="원본 데이터의 파일 이름")
@@ -119,6 +125,6 @@ if __name__ == "__main__":
     run_name = f"{args.run_name}_{formatted_time}"
 
     # 프로젝트 이름을 설정하여 실험 기록 시작
-    wandb.init(project="GCP_KIN", name=args.run_name)    
+    wandb.init(project=args.wandb_project, name=run_name)    
     train(args, combined_data)                           # train 함수를 호출하여 실제로 모델 학습(train)을 진행함.
 
