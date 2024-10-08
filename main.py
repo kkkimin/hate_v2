@@ -72,7 +72,7 @@ def parse_args():
     parser.add_argument(    # wandb 수정 이름 변경!
         "--run_name",
         type=str,
-        default="ensemble_base",
+        default="ensemble_base_last-test",
         help="wandb 에 기록되는 run name",
     )
     parser.add_argument(
