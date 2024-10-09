@@ -5,8 +5,9 @@ import pandas as pd
 import wandb
 import datetime
 import pytz
-from model import train
-from transformers import AutoTokenizer, AutoModelForSequenceClassification
+from model import train, load_tokenizer_and_model_for_train
+from transformers import AutoTokenizer, AutoModelForSequenceClassification, ElectraForSequenceClassification
+
 
 # parse_args 함수(인자) : model 학습 및 추론에 쓰일 config 를 관리
 def parse_args():
@@ -27,7 +28,10 @@ def parse_args():
     )
 
     parser.add_argument(
-        "--model_name", type=str, default="koelectra-base-bias", help='모델 이름',
+        "--model_name", 
+        type=str, 
+        default="monologg/koelectra-base-bias", 
+        help='모델 이름',
     )   
     parser.add_argument(
         "--save_path", type=str, default="./model", help="모델 저장 경로"
@@ -72,7 +76,7 @@ def parse_args():
     parser.add_argument(    # wandb 수정 이름 변경!
         "--run_name",
         type=str,
-        default="koelectra-base-bias_e1",
+        default="monologg/koelectra-base-bias_e1",
         help="wandb 에 기록되는 run name",
     )
     parser.add_argument(
@@ -92,12 +96,15 @@ def parse_args():
 
 
 from tqdm import tqdm
+from transformers import ElectraForSequenceClassification
 
 if __name__ == "__main__":
     sys.argv = sys.argv[:1]
     os.environ["TOKENIZERS_PARALLELISM"] = "false"    # tokenizer 사용 시 warning 방지
     args = parse_args()
     
+    tokenizer, model = load_tokenizer_and_model_for_train(args)
+
     # 원본데이터(train.csv) 로딩
     original_data_path = os.path.join(args.original_data_dir, args.original_data_file)  # "./train.csv"
     original_data = pd.read_csv(original_data_path)  

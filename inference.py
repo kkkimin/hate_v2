@@ -13,6 +13,7 @@ from tqdm import tqdm
 from model import load_model_for_inference
 from data import prepare_dataset, load_data
 from transformers import AutoTokenizer
+from transformers import ElectraForSequenceClassification
 
 # 데이터셋을 로드하는 함수 정의
 def load_data(dataset_dir):                
@@ -105,7 +106,7 @@ def infer_and_eval(model_name,model_dir):
 
 # 메인 함수 정의(추론,평가)
 if __name__ == "__main__":
-    model_name = "koelectra-base-bias"  # main.py 파일의 '--model_name'과 같은 모델로 적기
+    model_name = "monologg/koelectra-base-bias"  # main.py 파일의 '--model_name'과 같은 모델로 적기
     model_dir = "./best_model"   
 
     infer_and_eval(model_name,model_dir)

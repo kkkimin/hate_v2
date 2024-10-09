@@ -12,7 +12,8 @@ from data import prepare_dataset
 from transformers import (
     AutoTokenizer,
     AutoConfig,
-    AutoModelForSequenceClassification,
+    AutoModelForSequenceClassification, 
+    ElectraForSequenceClassification
 )
 from transformers import Trainer, TrainingArguments
 from transformers import EarlyStoppingCallback
@@ -32,7 +33,7 @@ def load_tokenizer_and_model_for_train(args):
     print(model_config)
 
     model = AutoModelForSequenceClassification.from_pretrained(
-        MODEL_NAME, config=model_config
+        MODEL_NAME, config=model_config, ignore_mismatched_sizes=True
     )
     print("--- Modeling Done ---")
     return tokenizer, model
