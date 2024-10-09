@@ -73,7 +73,6 @@ def parse_args():
         "--run_name",
         type=str,
         default="klue/bert-base_e1",
-        default="ensemble_base",
         help="wandb 에 기록되는 run name",
     )
     parser.add_argument(
