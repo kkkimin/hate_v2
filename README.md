@@ -6,15 +6,17 @@
 
 ## klue/bert-base
 - 실험 날짜: 2024-10-09-15:10
-- 모델 성능: Accuracy %, F1 Score 
-- 결과 CSV 파일: [Google Drive 링크](https://drive.google.com/file/d/...)
+- 모델 성능: F1 Score 0.9151
+- 결과 CSV 파일링크: [Google Drive 링크](https://drive.google.com/file/d/...)
+- 결과 CSV 파일명: result_1009_1749.csv
 
-## KLUE/RoBERTa-large
-- 실험 날짜: 
-- 모델 성능: Accuracy %, F1 Score
+## beomi/KcELECTRA-base
+- 실험 날짜: 2024-10-09-18-22
+- 모델 성능: F1 Score 0.9353
 - 결과 CSV 파일: [Google Drive 링크](https://drive.google.com/file/d/...)
+- 결과 CSV 파일명: result_1009_1822.csv
 
 ## 앙상블 결과
 - 실험 날짜: 
-- 모델 성능: Accuracy %, F1 Score
+- 모델 성능: F1 Score
 - 결과 CSV 파일: [Google Drive 링크](https://drive.google.com/file/d/...)
