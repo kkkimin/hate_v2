@@ -105,7 +105,7 @@ def infer_and_eval(model_name,model_dir):
 
 # 메인 함수 정의(추론,평가)
 if __name__ == "__main__":
-    model_name = "klue/bert-base"  # main.py 파일의 '--model_name'과 같은 모델로 적기
+    model_name = "fine-tuned-fake-news-classifier"  # main.py 파일의 '--model_name'과 같은 모델로 적기
     model_dir = "./best_model"   
 
     infer_and_eval(model_name,model_dir)
