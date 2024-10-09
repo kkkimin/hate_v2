@@ -57,7 +57,7 @@ def infer_and_eval(model_name,model_dir):
     _, _, hate_test_dataset, test_dataset = prepare_dataset(
         dataset_dir,    # 데이터셋 디렉토리
         tokenizer,      # 초기화한 tokenizer
-        256,            # max_length
+        128,            # max_length
         combined_data   # combined_data 인자 추가
     )
 
@@ -105,7 +105,7 @@ def infer_and_eval(model_name,model_dir):
 
 # 메인 함수 정의(추론,평가)
 if __name__ == "__main__":
-    model_name = "beomi/KcELECTRA-base"  # main.py 파일의 '--model_name'과 같은 모델로 적기
+    model_name = "klue/bert-base"  # main.py 파일의 '--model_name'과 같은 모델로 적기
     model_dir = "./best_model"   
 
     infer_and_eval(model_name,model_dir)

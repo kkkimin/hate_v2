@@ -27,39 +27,39 @@ def parse_args():
     )
 
     parser.add_argument(
-        "--model_name", type=str, default="beomi/KcELECTRA-base", help='모델 이름',
+        "--model_name", type=str, default="klue/bert-base", help='모델 이름',
     )   
     parser.add_argument(
         "--save_path", type=str, default="./model", help="모델 저장 경로"
     )
     parser.add_argument(
-        "--save_step", type=int, default=300, help="모델을 저장할 스텝 간격"  # 모델이 훈련 도중에 저장되는 간격을 설정
+        "--save_step", type=int, default=200, help="모델을 저장할 스텝 간격"  # 모델이 훈련 도중에 저장되는 간격을 설정
     )
     parser.add_argument(
-        "--logging_step", type=int, default=300, help="로그를 출력할 스텝 간격"
+        "--logging_step", type=int, default=200, help="로그를 출력할 스텝 간격"
     )
     parser.add_argument(
-        "--eval_step", type=int, default=300, help="모델을 평가할 스텝 간격"  
+        "--eval_step", type=int, default=200, help="모델을 평가할 스텝 간격"  
     )
     parser.add_argument(
-        "--save_limit", type=int, default=10, help="저장할 모델의 최대 개수"  # 저장할 체크포인트(모델)의 최대 개수
+        "--save_limit", type=int, default=5, help="저장할 모델의 최대 개수"  # 저장할 체크포인트(모델)의 최대 개수
     )
     parser.add_argument("--seed", type=int, default=42, help="랜덤 시드 값")
     parser.add_argument("--epochs", type=int, default=10, help="에폭 수 (예: 10)")
     parser.add_argument(
         "--batch_size",
         type=int,
-        default=16,
+        default=8,
         help="배치 사이즈 (메모리에 맞게 조절, 예: 16 또는 32)",
     )
     parser.add_argument(
-        "--max_len", type=int, default=256, help="입력 시퀀스의 최대 길이"
+        "--max_len", type=int, default=128, help="입력 시퀀스의 최대 길이"
     )
     parser.add_argument("--lr", type=float, default=2e-5, help="학습률(learning rate)")
     parser.add_argument(
         "--weight_decay", type=float, default=0.01, help="가중치 감소(weight decay) 값"
     )
-    parser.add_argument("--warmup_steps", type=int, default=500, help="워밍업 스텝 수")
+    parser.add_argument("--warmup_steps", type=int, default=100, help="워밍업 스텝 수")
     parser.add_argument(
         "--scheduler", type=str, default="linear", help="학습률 스케줄러 타입"
     )
@@ -72,7 +72,7 @@ def parse_args():
     parser.add_argument(    # wandb 수정 이름 변경!
         "--run_name",
         type=str,
-        default="ensemble_base설계중_new시도1",
+        default="klue/bert-base_e1",
         help="wandb 에 기록되는 run name",
     )
     parser.add_argument(
