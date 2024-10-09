@@ -49,7 +49,7 @@ def parse_args():
     parser.add_argument(
         "--batch_size",
         type=int,
-        default=8,
+        default=16,
         help="배치 사이즈 (메모리에 맞게 조절, 예: 16 또는 32)",
     )
     parser.add_argument(
@@ -72,7 +72,7 @@ def parse_args():
     parser.add_argument(    # wandb 수정 이름 변경!
         "--run_name",
         type=str,
-        default="klue/bert-base_e1",
+        default="1_klue/bert-base-(2)배치사이즈8->16수정",
         help="wandb 에 기록되는 run name",
     )
     parser.add_argument(
