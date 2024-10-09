@@ -60,7 +60,7 @@ def load_trainer_for_train(args, model, hate_train_dataset, hate_valid_dataset):
         learning_rate = args.lr,  
         lr_scheduler_type="linear",
         per_device_train_batch_size = args.batch_size,  # 각 장치에서 훈련할 배치 사이즈를 설정
-        per_device_eval_batch_size = 16,  # 평가 시 사용할 배치 사이즈를 설정
+        per_device_eval_batch_size = 8,  # 평가 시 사용할 배치 사이즈를 설정
         warmup_steps = args.warmup_steps,  # number of warmup steps for learning rate scheduler
         weight_decay = args.weight_decay,  # 가중치 감소 값을 설정(과적합 방지를 위해)
         logging_dir = args.save_path + "logs",  # directory for storing logs
@@ -77,7 +77,7 @@ def load_trainer_for_train(args, model, hate_train_dataset, hate_valid_dataset):
 
     ## Add callback & optimizer & scheduler
     MyCallback = EarlyStoppingCallback(
-        early_stopping_patience=10,      # 몇 에폭 동안 검증 손실이 개선되지 않으면 훈련을 중단할지를 결정
+        early_stopping_patience=5,      # 몇 에폭 동안 검증 손실이 개선되지 않으면 훈련을 중단할지를 결정
         early_stopping_threshold=0.001  # 개선을 고려하는 손실 변화의 최소 크기
     )
 
