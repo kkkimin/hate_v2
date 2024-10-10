@@ -25,9 +25,8 @@ def parse_args():
         default="bert",
         help='모델 타입 (예: "bert", "electra")',
     )
-
     parser.add_argument(
-        "--model_name", type=str, default="klue/bert-base", help='모델 이름',
+        "--model_name", type=str, default="beomi/KcELECTRA-base", help='모델 이름',
     )   
     parser.add_argument(
         "--save_path", type=str, default="./model", help="모델 저장 경로"
@@ -49,7 +48,7 @@ def parse_args():
     parser.add_argument(
         "--batch_size",
         type=int,
-        default=8,
+        default=16,
         help="배치 사이즈 (메모리에 맞게 조절, 예: 16 또는 32)",
     )
     parser.add_argument(
@@ -72,7 +71,7 @@ def parse_args():
     parser.add_argument(    # wandb 수정 이름 변경!
         "--run_name",
         type=str,
-        default="klue/bert-base_e1",
+        default="beomi/KcELECTRA-base",
         help="wandb 에 기록되는 run name",
     )
     parser.add_argument(
