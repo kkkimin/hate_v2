@@ -41,7 +41,7 @@ def construct_tokenized_dataset(dataset, tokenizer, max_length):   # dataframe �
         max_length=max_length,                 # 토큰화된 시퀀스의 최대 길이(길면 잘리고, 짧으면 패딩됨)
         add_special_tokens=True,
         return_token_type_ids=False,           # 문장쌍을 처리할 때 사용하는 '토큰 유형 ID'를 반환하지 않겠다.
-    )
+    )                                          # BERT 이후 모델(RoBERTa 등) 사용할때 False
     print("tokenizing 된 데이터 형태")
     print("-"*100)
     print(tokenized_sentences[:3])
